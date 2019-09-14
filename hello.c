@@ -3,6 +3,8 @@
 
 int main(void)
 {
-    string name = get_string("What is your name?\n");
+    //Asks user for their name and stores it
+    string name = get_string("What is your name?\n"); 
+    //Prints hello, (name)
     printf("hello, %s\n",name);
 }
