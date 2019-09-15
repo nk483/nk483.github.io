@@ -16,7 +16,7 @@ int main(void)
     for (int i = 0; i < height; i++) 
     {
         //This loop is so that the hashtags have space to fan out to the left
-        for (int k = 0; k < dummyheight-1; k++) 
+        for (int k = 0; k < dummyheight - 1; k++) 
         {
             printf(" ") ;
         }
