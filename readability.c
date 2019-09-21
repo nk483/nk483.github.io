@@ -20,11 +20,11 @@ int main(void)
     //There are three logical scenarios, either the index is less than one, greater than 15, or between 1 and 15. The print statements differ based on which scenario.
     if (index < 1)
     {
-        printf("Before Grade 1");
+        printf("Before Grade 1\n");
     }
     if (index > 15)
     {
-        printf("Grade 16+");
+        printf("Grade 16+\n");
     }
     else
     {
