@@ -13,6 +13,7 @@ int main(void)
     int lettercount = countLetters(text);
     int wordcount = countWords(text);
     int sentencecount = countSentences(text);
+    // using casting so the remainder of the division isn't discarded
     double L = (lettercount / (double) wordcount) * 100;
     double S = (sentencecount / (double) wordcount) * 100;
     // The Coleman-Liau Equation
