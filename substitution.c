@@ -15,6 +15,25 @@ int main(int argc, string argv[])
         printf("Key must contain 26 characters\n");
         return 1;
     }
+    for (int i = 0; i < 26; i++)
+    {
+        for (int k = i+1; k < 26; k++)
+        {
+            if (argv[1][i] == argv[1][k] )
+            {
+                printf("Please enter a key with no duplicate characters!\n");
+                return 1;
+            }
+        }
+    }
+    for (int i = 0; i < 26; i++)
+    {
+        if (!((argv[1][i] >= 65 && argv[1][i] <= 90) || (argv[1][i] >= 97 && argv[1][i] <= 122)))
+        {
+            printf("Please enter a key that is entirely comprised of letters!\n");
+            return 1;
+        }
+    }
     string plaintext = get_string("Plaintext: ");
     int lettervalue = 0;
     int n = strlen(plaintext);
