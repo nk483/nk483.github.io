@@ -8,7 +8,7 @@ int main(int argc, string argv[])
     if (strlen(argv[1]) != 26)
     {
         printf("Key must contain 26 characters\n");
-        return 0;
+        return 1;
     }
     string plaintext = get_string("Plaintext: ");
     int lettervalue = 0;
@@ -39,5 +39,5 @@ int main(int argc, string argv[])
        }
       array[i] = letter;
    }
-    printf("Ciphertext: %s\n",array);
+    printf("ciphertext: %s\n",array);
 }
