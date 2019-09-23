@@ -5,6 +5,11 @@
 
 int main(int argc, string argv[])
 {
+    if (argc != 2)
+    {
+        printf("Please input one command line argument\n");
+        return 1;
+    }
     if (strlen(argv[1]) != 26)
     {
         printf("Key must contain 26 characters\n");
@@ -14,7 +19,7 @@ int main(int argc, string argv[])
     int lettervalue = 0;
     int n = strlen(plaintext);
     char array[n];
-    string cipher = "";
+  //  string cipher = " ";
     char letter = 'a';
 
    for (int i = 0; i < strlen(argv[1]); i++)
@@ -39,5 +44,9 @@ int main(int argc, string argv[])
        }
       array[i] = letter;
    }
-    printf("ciphertext: %s\n",array);
+    string cipher = array;
+    cipher[n] = 0;
+    printf("ciphertext: %s",cipher);
+    printf("\n");
+    return 0;
 }
