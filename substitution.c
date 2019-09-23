@@ -15,11 +15,12 @@ int main(int argc, string argv[])
         printf("Key must contain 26 characters\n");
         return 1;
     }
+    // Nested for loops to check every character of the CLA against every other one to make sure there are no duplicates
     for (int i = 0; i < 26; i++)
     {
-        for (int k = i+1; k < 26; k++)
+        for (int k = i + 1; k < 26; k++)
         {
-            if (argv[1][i] == argv[1][k] )
+            if (argv[1][i] == argv[1][k])
             {
                 printf("Please enter a key with no duplicate characters!\n");
                 return 1;
@@ -28,6 +29,7 @@ int main(int argc, string argv[])
     }
     for (int i = 0; i < 26; i++)
     {
+        // Checks that all characters are either lowercase or uppercase letters
         if (!((argv[1][i] >= 65 && argv[1][i] <= 90) || (argv[1][i] >= 97 && argv[1][i] <= 122)))
         {
             printf("Please enter a key that is entirely comprised of letters!\n");
@@ -37,35 +39,40 @@ int main(int argc, string argv[])
     string plaintext = get_string("Plaintext: ");
     int lettervalue = 0;
     int n = strlen(plaintext);
+    // Went with an array of characters here because a string was giving some weird errors with DEADLYSIGNAL
     char array[n];
-  //  string cipher = " ";
     char letter = 'a';
-
-   for (int i = 0; i < strlen(argv[1]); i++)
-   {
-       argv[1][i] = tolower(argv[1][i]);
-   }
-   for (int i = 0; i < n; i++)
+    // Turns the key into lowercase so the plaintext case isn't messed up
+    for (int i = 0; i < strlen(argv[1]); i++)
     {
-       lettervalue = plaintext[i];
-       if (lettervalue >= 97 && lettervalue <= 122)
-       {
-            letter = argv[1][lettervalue-97];
-       }
-       else if (lettervalue >= 65 && lettervalue <= 90)
-       {
-           letter = argv[1][lettervalue-65];
-           letter -= 32;
-       }
-       else
-       {
+        argv[1][i] = tolower(argv[1][i]);
+    }
+    for (int i = 0; i < n; i++)
+    {
+        lettervalue = plaintext[i];
+        //Shifts by 97 to get to the corresponding letter of the key
+        if (lettervalue >= 97 && lettervalue <= 122)
+        {
+            letter = argv[1][lettervalue - 97];
+        }
+        else if (lettervalue >= 65 && lettervalue <= 90)
+        {
+            letter = argv[1][lettervalue - 65];
+            //To get back to uppercase
+            letter -= 32;
+        }
+        else
+        {
             letter = lettervalue;
-       }
-      array[i] = letter;
-   }
+        }
+        //Populating the array of characters
+        array[i] = letter;
+    }
+    //Going back to a string that can be printed
     string cipher = array;
+    //Making sure the null character shows up after n characters
     cipher[n] = 0;
-    printf("ciphertext: %s",cipher);
+    printf("ciphertext: %s", cipher);
     printf("\n");
     return 0;
 }
