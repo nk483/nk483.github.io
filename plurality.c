@@ -90,15 +90,11 @@ void print_winner(void)
     }
     for (int i = 0; i < candidate_count; i++)
     {
-        if (i != indexOfWinner)
-        {
             if (candidates[i].votes == candidates[indexOfWinner].votes)
             {
                 printf("%s\n", candidates[i].name);
             }
-        }
     }
-    printf("%s\n", candidates[indexOfWinner].name);
     return;
 }
 
