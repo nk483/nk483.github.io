@@ -196,6 +196,7 @@ void sort_pairs(void)
         tempPair = election[i].matchup;
         election[i].matchup = election[currentlargestindex].matchup;
         election[currentlargestindex].matchup = tempPair;
+        currentlargest = 0;
     }
     for (int i = 0; i < pair_count; i++)
         {
