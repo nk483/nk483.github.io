@@ -190,7 +190,7 @@ void sort_pairs(void)
                 currentlargestindex = j;
             }
         }
-        election[i].margin = temp;
+        temp = election[i].margin;
         election[i].margin = election[currentlargestindex].margin;
         election[currentlargestindex].margin = temp;
         tempPair = election[i].matchup;
