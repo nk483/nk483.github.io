@@ -221,7 +221,7 @@ void lock_pairs(void)
         {
             for (int k = 0; k < candidate_count; k++)
             {
-                locked[j][k] += sum;
+                sum += locked[k][j];
             }
             if (sum == 0)
             {
@@ -229,11 +229,12 @@ void lock_pairs(void)
                 break;
             }
         }
-        if (cycle)
-        {
-            locked[pairs[i].winner][pairs[i].loser] = 0;
-        }
-        cycle = true;
+       if (cycle)
+       {
+           locked[pairs[i].winner][pairs[i].loser] = 0;
+       }
+    cycle = true;
+    sum = 0;
     }
     return;
 }
@@ -247,13 +248,14 @@ void print_winner(void)
         {
             for (int k = 0; k < candidate_count; k++)
             {
-                locked[j][k] += sum;
+                sum += locked[k][j];
             }
             if (sum == 0)
             {
                 winnerindex = j;
                 break;
             }
+            sum = 0;
         }
         printf("%s\n", candidates[winnerindex]);
     return;
