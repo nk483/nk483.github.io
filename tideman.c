@@ -201,8 +201,8 @@ void sort_pairs(void)
     for (int i = 0; i < pair_count; i++)
         {
             pairs[i] = election[i].matchup;
-            printf("Winner %i: %i\n", i, pairs[i].winner);
-            printf("Loser %i: %i\n", i, pairs[i].loser);
+         //   printf("Winner %i: %i\n", i, pairs[i].winner);
+         //   printf("Loser %i: %i\n", i, pairs[i].loser);
 
         }
 
