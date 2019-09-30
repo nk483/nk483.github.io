@@ -102,6 +102,7 @@ bool vote(int rank, string name, int ranks[])
 {
     bool valid = false;
     int relevantcandidate = 0;
+    //Ensures vote is valid
     for (int i = 0; i < candidate_count; i++)
     {
         if (strcmp(name, candidates[i]) == 0)
@@ -123,12 +124,13 @@ bool vote(int rank, string name, int ranks[])
 // Update preferences given one voter's ranks
 void record_preferences(int ranks[])
 {
+    //Two nested loops that augment preferences by one for each candidates ranked behind the current i
     for (int i = 0; i < candidate_count; i++)
     {
-       for (int j = i + 1; j < candidate_count; j++)
-       {
-           preferences[ranks[i]][ranks[j]]++;
-       }
+        for (int j = i + 1; j < candidate_count; j++)
+        {
+            preferences[ranks[i]][ranks[j]]++;
+        }
     }
     return;
 }
@@ -140,6 +142,7 @@ void add_pairs(void)
     {
         for (int j = i + 1; j < candidate_count; j++)
         {
+            //Checking which candidate is the winner and which is the loser
             if (preferences[i][j] > preferences[j][i])
             {
                 pairs[pair_count] = (pair) {i, j};
@@ -159,6 +162,7 @@ void add_pairs(void)
 // Sort pairs in decreasing order by strength of victory
 void sort_pairs(void)
 {
+    //So that I can sort the margins without forgetting who the matchup was
     typedef struct
     {
         pair matchup;
@@ -169,7 +173,7 @@ void sort_pairs(void)
     int margins[pair_count];
     for (int i = 0; i < pair_count; i++)
     {
-       margins[i] = preferences[pairs[i].winner][pairs[i].loser] - preferences[pairs[i].loser][pairs[i].winner];
+        margins[i] = preferences[pairs[i].winner][pairs[i].loser] - preferences[pairs[i].loser][pairs[i].winner];
     }
     sortable election[pair_count];
     for (int i = 0; i < pair_count; i++)
@@ -180,9 +184,10 @@ void sort_pairs(void)
     int currentlargestindex = 0;
     int temp = 0;
     pair tempPair;
+    //My implementation of insertion sort
     for (int i = 0; i < pair_count; i++)
     {
-        for (int j = i+1; j < pair_count; j++)
+        for (int j = i + 1; j < pair_count; j++)
         {
             if (election[j].margin > currentlargest)
             {
@@ -199,12 +204,11 @@ void sort_pairs(void)
         currentlargest = 0;
     }
     for (int i = 0; i < pair_count; i++)
-        {
-            pairs[i] = election[i].matchup;
-         //   printf("Winner %i: %i\n", i, pairs[i].winner);
-         //   printf("Loser %i: %i\n", i, pairs[i].loser);
-
-        }
+    {
+        pairs[i] = election[i].matchup;
+        //   printf("Winner %i: %i\n", i, pairs[i].winner);
+        //   printf("Loser %i: %i\n", i, pairs[i].loser);
+    }
 
     return;
 }
@@ -217,6 +221,7 @@ void lock_pairs(void)
     for (int i = 0; i < pair_count; i++)
     {
         locked[pairs[i].winner][pairs[i].loser] = 1;
+        //Checks to see if the edge just added creates a cycle
         for (int j = 0; j < candidate_count; j++)
         {
             for (int k = 0; k < candidate_count; k++)
@@ -229,12 +234,13 @@ void lock_pairs(void)
                 break;
             }
         }
-       if (cycle)
-       {
-           locked[pairs[i].winner][pairs[i].loser] = 0;
-       }
-    cycle = true;
-    sum = 0;
+        //If it does create a cycle we remove it and augment i
+        if (cycle)
+        {
+            locked[pairs[i].winner][pairs[i].loser] = 0;
+        }
+        cycle = true;
+        sum = 0;
     }
     return;
 }
@@ -244,20 +250,21 @@ void print_winner(void)
 {
     int sum = 0;
     int winnerindex = 0;
-     for (int j = 0; j < candidate_count; j++)
+    for (int j = 0; j < candidate_count; j++)
+    {
+        for (int k = 0; k < candidate_count; k++)
         {
-            for (int k = 0; k < candidate_count; k++)
-            {
-                sum += locked[k][j];
-            }
-            if (sum == 0)
-            {
-                winnerindex = j;
-                break;
-            }
-            sum = 0;
+            sum += locked[k][j];
         }
-        printf("%s\n", candidates[winnerindex]);
+        if (sum == 0)
+        {
+            winnerindex = j;
+            break;
+        }
+        sum = 0;
+    }
+    //The winner is the candidate whose column is all zeroes
+    printf("%s\n", candidates[winnerindex]);
     return;
 }
 
