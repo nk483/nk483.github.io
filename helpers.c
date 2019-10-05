@@ -62,7 +62,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     int redAverage = 0;
     int blueAverage = 0;
     int greenAverage = 0;
-    int divisor = 0;
+    int divisor = 9;
     for (int i = 0; i < height; i++)
     {
         for (int j = 0; j < width; j++)
@@ -71,12 +71,12 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             {
                 for (int l = -1; l < 2; l++)
                 {
-                    if (j + l < 0 || j + l >= width)
+                    if ((j + l < 0) || (j + l >= width))
                     {
                         divisor--;
 
                     }
-                    else if (i+k < 0 || i + k >= height)
+                    else if ((i + k < 0) || (i + k >= height))
                     {
                         divisor--;
                     }
@@ -97,6 +97,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
             blueSum = 0;
             redSum = 0;
             greenSum = 0;
+            divisor = 9;
 
         }
     }
