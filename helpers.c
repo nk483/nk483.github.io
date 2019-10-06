@@ -116,5 +116,72 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 // Detect edges
 void edges(int height, int width, RGBTRIPLE image[height][width])
 {
+    int xGradientBlue = 0;
+    int xGradientRed = 0;
+    int xGradientGreen = 0;
+    int yGradientBlue = 0;
+    int yGradientRed = 0;
+    int yGradientGreen = 0;
+    int singleValueBlue = 0;
+    int singleValueRed = 0;
+    int singleValueGreen = 0;
+    RGBTRIPLE dummy[height+2][width+2];
+    for (int i = 0; i < height + 2; i++)
+    {
+        for (int j = 0; j < width + 2; j++)
+        {
+            dummy[i][j].rgbtBlue = 0;
+            dummy[i][j].rgbtRed = 0;
+            dummy[i][j].rgbtGreen = 0;
+        }
+    }
+    for (int i = 0; i < height + 2; i++)
+    {
+        for (int j = 0; j < width + 2; j++)
+        {
+            if (j == 0 || j == width + 1 || i == 0 || i == width + 1)
+            {
+                dummy[i][j].rgbtRed = 0;
+                dummy[i][j].rgbtBlue = 0;
+                dummy[i][j].rgbtGreen = 0;
+            }
+            else
+            {
+                dummy[i][j].rgbtBlue = image[i-1][j-1].rgbtBlue;
+                dummy[i][j].rgbtRed = image[i-1][j-1].rgbtRed;
+                dummy[i][j].rgbtGreen = image[i-1][j-1].rgbtGreen;
+            }
+        }
+    }
+    for (int i = 1; i < height + 1; i++)
+    {
+        for (int j = 1 ; j < width + 1; j++)
+        {
+            xGradientBlue = -1 * dummy[i-1][j-1].rgbtBlue + -2 * dummy[i][j-1].rgbtBlue + -1 * dummy[i+1][j-1].rgbtBlue + dummy[i-1][j+1].rgbtBlue + 2 * dummy[i][j+1].rgbtBlue + dummy[i+1][j+1].rgbtBlue;
+            yGradientBlue = -1 * dummy[i-1][j-1].rgbtBlue + -2 * dummy[i-1][j].rgbtBlue + -1 * dummy[i-1][j+1].rgbtBlue + dummy[i+1][j-1].rgbtBlue + 2 * dummy[i+1][j].rgbtBlue + dummy[i+1][j+1].rgbtBlue;
+            singleValueBlue = (int) round(sqrt(pow(xGradientBlue, 2) + pow(yGradientBlue, 2)));
+            xGradientRed = -1 * dummy[i-1][j-1].rgbtRed + -2 * dummy[i][j-1].rgbtRed + -1 * dummy[i+1][j-1].rgbtRed + dummy[i-1][j+1].rgbtRed + 2 * dummy[i][j+1].rgbtRed + dummy[i+1][j+1].rgbtRed;
+            yGradientRed = -1 * dummy[i-1][j-1].rgbtRed + -2 * dummy[i-1][j].rgbtRed + -1 * dummy[i-1][j+1].rgbtRed + dummy[i+1][j-1].rgbtRed + 2 * dummy[i+1][j].rgbtRed + dummy[i+1][j+1].rgbtRed;
+            singleValueRed = (int) round(sqrt(pow(xGradientRed, 2) + pow(yGradientRed, 2)));
+            xGradientGreen = -1 * dummy[i-1][j-1].rgbtBlue + -2 * dummy[i][j-1].rgbtBlue + -1 * dummy[i+1][j-1].rgbtBlue + dummy[i-1][j+1].rgbtBlue + 2 * dummy[i][j+1].rgbtBlue + dummy[i+1][j+1].rgbtBlue;
+            yGradientGreen = -1 * dummy[i-1][j-1].rgbtBlue + -2 * dummy[i-1][j].rgbtBlue + -1 * dummy[i-1][j+1].rgbtBlue + dummy[i+1][j-1].rgbtBlue + 2 * dummy[i+1][j].rgbtBlue + dummy[i+1][j+1].rgbtBlue;
+            singleValueGreen = (int) round(sqrt(pow(xGradientGreen, 2) + pow(yGradientGreen, 2)));
+            if (singleValueBlue > 255)
+            {
+                singleValueBlue = 255;
+            }
+            if (singleValueRed > 255)
+            {
+                singleValueRed = 255;
+            }
+            if (singleValueGreen > 255)
+            {
+                singleValueGreen = 255;
+            }
+            image[i-1][j-1].rgbtBlue = singleValueBlue;
+            image[i-1][j-1].rgbtGreen = singleValueGreen;
+            image[i-1][j-1].rgbtRed = singleValueRed;
+        }
+    }
     return;
 }
