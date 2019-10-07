@@ -171,14 +171,16 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     {
         for (int j = 1 ; j < width + 1; j++)
         {
-            xGradientBlue = -1 * dummy[i-1][j-1].rgbtBlue + -2 * dummy[i][j-1].rgbtBlue + -1 * dummy[i+1][j-1].rgbtBlue + dummy[i-1][j+1].rgbtBlue + 2 * dummy[i][j+1].rgbtBlue + dummy[i+1][j+1].rgbtBlue;
-            yGradientBlue = -1 * dummy[i-1][j-1].rgbtBlue + -2 * dummy[i-1][j].rgbtBlue + -1 * dummy[i-1][j+1].rgbtBlue + dummy[i+1][j-1].rgbtBlue + 2 * dummy[i+1][j].rgbtBlue + dummy[i+1][j+1].rgbtBlue;
+            xGradientBlue = -1 * dummy[i - 1][j - 1].rgbtBlue + -2 * dummy[i][j - 1].rgbtBlue + -1 * dummy[i + 1][j - 1].rgbtBlue + dummy[i -
+                            1][j + 1].rgbtBlue + 2 * dummy[i][j + 1].rgbtBlue + dummy[i + 1][j + 1].rgbtBlue;
+            yGradientBlue = -1 * dummy[i - 1][j - 1].rgbtBlue + -2 * dummy[i - 1][j].rgbtBlue + -1 * dummy[i - 1][j + 1].rgbtBlue + dummy[i +
+                            1][j - 1].rgbtBlue + 2 * dummy[i + 1][j].rgbtBlue + dummy[i + 1][j + 1].rgbtBlue;
             singleValueBlue = (int) round(sqrt(pow(xGradientBlue, 2) + pow(yGradientBlue, 2)));
-            xGradientRed = -1 * dummy[i-1][j-1].rgbtRed + -2 * dummy[i][j-1].rgbtRed + -1 * dummy[i+1][j-1].rgbtRed + dummy[i-1][j+1].rgbtRed + 2 * dummy[i][j+1].rgbtRed + dummy[i+1][j+1].rgbtRed;
-            yGradientRed = -1 * dummy[i-1][j-1].rgbtRed + -2 * dummy[i-1][j].rgbtRed + -1 * dummy[i-1][j+1].rgbtRed + dummy[i+1][j-1].rgbtRed + 2 * dummy[i+1][j].rgbtRed + dummy[i+1][j+1].rgbtRed;
+            xGradientRed = -1 * dummy[i - 1][j - 1].rgbtRed + -2 * dummy[i][j - 1].rgbtRed + -1 * dummy[i + 1][j -1].rgbtRed + dummy[i - 1][j + 1].rgbtRed + 2 * dummy[i][j + 1].rgbtRed + dummy[i + 1][j + 1].rgbtRed;
+            yGradientRed = -1 * dummy[i - 1][j - 1].rgbtRed + -2 * dummy[i - 1][j].rgbtRed + -1 * dummy[i - 1][j + 1].rgbtRed + dummy[i + 1][j-1].rgbtRed + 2 * dummy[i + 1][j].rgbtRed + dummy[i + 1][j + 1].rgbtRed;
             singleValueRed = (int) round(sqrt(pow(xGradientRed, 2) + pow(yGradientRed, 2)));
-            xGradientGreen = -1 * dummy[i-1][j-1].rgbtGreen + -2 * dummy[i][j-1].rgbtGreen + -1 * dummy[i+1][j-1].rgbtGreen + dummy[i-1][j+1].rgbtGreen + 2 * dummy[i][j+1].rgbtGreen + dummy[i+1][j+1].rgbtGreen;
-            yGradientGreen = -1 * dummy[i-1][j-1].rgbtGreen + -2 * dummy[i-1][j].rgbtGreen + -1 * dummy[i-1][j+1].rgbtGreen + dummy[i+1][j-1].rgbtGreen + 2 * dummy[i+1][j].rgbtGreen + dummy[i+1][j+1].rgbtGreen;
+            xGradientGreen = -1 * dummy[i - 1][j - 1].rgbtGreen + -2 * dummy[i][j - 1].rgbtGreen + -1 * dummy[i + 1][j - 1].rgbtGreen + dummy[i - 1][j + 1].rgbtGreen + 2 * dummy[i][j + 1].rgbtGreen + dummy[i + 1][j + 1].rgbtGreen;
+            yGradientGreen = -1 * dummy[i - 1][j - 1].rgbtGreen + -2 * dummy[i - 1][j].rgbtGreen + -1 * dummy[i - 1][j + 1].rgbtGreen + dummy[i + 1][j - 1].rgbtGreen + 2 * dummy[i + 1][j].rgbtGreen + dummy[i + 1][j + 1].rgbtGreen;
             singleValueGreen = (int) round(sqrt(pow(xGradientGreen, 2) + pow(yGradientGreen, 2)));
             if (singleValueBlue > 255)
             {
