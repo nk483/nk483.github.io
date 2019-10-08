@@ -22,13 +22,14 @@ int main(int argc, char *argv[])
     FILE *file = fopen(argv[1], "r");
     // To read the input in blocks of 512 bytes
     unsigned char blockSize[512];
-    char *jpegName = malloc(20*sizeof(char));
-    FILE *jpeg = NULL;
+    char *jpegName = malloc(8*sizeof(char));
+    FILE *jpeg = malloc(sizeof(file));
     int jpegCounter = 0;
     bool firstJpeg = false;
 
-    while (fread(blockSize, 1, 512, file) != -1)
+    while (!feof(file))
     {
+        fread(blockSize, 1, 512, file);
         if (blockSize[0] == 255 && blockSize[1] == 216 && blockSize[2] == 255 && (blockSize[3] < 240 && blockSize[3] >= 224))
         {
             if (firstJpeg)
@@ -48,6 +49,7 @@ int main(int argc, char *argv[])
     }
     free(jpegName);
     fclose(jpeg);
+    free(jpeg);
     return 0;
 
 }
