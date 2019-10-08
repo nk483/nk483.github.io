@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
             {
                 fclose(jpeg);
             }
-            sprintf(jpegName,"%i.jpg",jpegCounter);
+            sprintf(jpegName,"%03i.jpg",jpegCounter);
             jpeg = fopen(jpegName,"a");
             firstJpeg = true;
             jpegCounter++;
@@ -48,6 +48,7 @@ int main(int argc, char *argv[])
     }
     free(jpegName);
     fclose(jpeg);
+    return 0;
 
 }
 
