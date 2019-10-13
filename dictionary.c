@@ -65,8 +65,8 @@ bool load(const char *dictionary)
     FILE *file = fopen(dictionary, "r");
     int j = 0;
     int k = 0;
-    char unfinishedWord[46];
-    char finishedWord[46];
+    char *unfinishedWord = malloc(50);
+    char *finishedWord = malloc(50);
     char c[1];
     while(!feof(file))
     {
