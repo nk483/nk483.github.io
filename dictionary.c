@@ -11,10 +11,14 @@
 
 #include <strings.h>
 
+#include <ctype.h>
+
+#include <string.h>
+
 // Represents a node in a hash table
 typedef struct node
 {
-    char word[LENGTH + 1];
+    char value[LENGTH + 1];
     struct node *next;
 }
 node;
@@ -23,7 +27,7 @@ char memoryDict[144091][50];
 
 
 // Number of buckets in hash table
-const unsigned int N = 1;
+const unsigned int N = 26;
 
 // Hash table
 node *table[N];
@@ -44,22 +48,25 @@ bool check(const char *word)
 // Hashes word to a number
 unsigned int hash(const char *word)
 {
-    // TODO
-    return 0;
+    int ascii = word[0];
+    ascii = tolower(ascii);
+    ascii = ascii - 65;
+    ascii = ascii % 26;
+    return ascii;
 }
 
 // Loads dictionary into memory, returning true if successful else false
 bool load(const char *dictionary)
 {
-    if (fopen(dictionary, "r") == NULL)
+     if (fopen(dictionary, "r") == NULL)
     {
         return false;
     }
     FILE *file = fopen(dictionary, "r");
     int j = 0;
     int k = 0;
-    char* unfinishedWord = malloc(LENGTH);
-    char* finishedWord = malloc(LENGTH);
+    char unfinishedWord[46];
+    char finishedWord[46];
     char c[1];
     while(!feof(file))
     {
@@ -90,6 +97,28 @@ bool load(const char *dictionary)
         j++;
 
     }
+
+    // for (int i = 0; i < 26; i++)
+    // {
+    //     table[i] = NULL;
+    // }
+    // node *append = malloc(sizeof(node)+50);
+    // node *currentLink = malloc(sizeof(node)+50);
+    // append->next = malloc(sizeof(node));
+    // currentLink->next = malloc(sizeof(node));
+    // int a = 0;
+    // int b = 0;
+    // int index = 0;
+    // while (memoryDict[a][0] != 0)
+    // {
+    // index = hash(memoryDict[a]);
+    // currentLink = table[index];
+    // append->next = currentLink->next;
+    // strcpy(append->value,memoryDict[a]);
+    // currentLink->next = append;
+    // a++;
+    // }
+
     return true;
 }
 // Returns number of words in dictionary if loaded else 0 if not yet loaded
