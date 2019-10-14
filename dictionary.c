@@ -23,6 +23,8 @@ typedef struct node
 }
 node;
 
+FILE*file;
+
 char *unfinishedWord = "";
 char *finishedWord = "";
 
@@ -65,7 +67,7 @@ bool load(const char *dictionary)
     // {
     //     return false;
     // }
-    FILE *file = fopen(dictionary, "r");
+    file = fopen(dictionary, "r");
     int j = 0;
     int k = 0;
     char c[1];
