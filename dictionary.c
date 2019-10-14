@@ -121,7 +121,7 @@ bool load(const char *dictionary)
     // currentLink->next = append;
     // a++;
     // }
-    //free(file);
+    fclose(file);
     return true;
 }
 // Returns number of words in dictionary if loaded else 0 if not yet loaded
