@@ -144,5 +144,6 @@ bool unload(void)
 {
     free(unfinishedWord);
     free(finishedWord);
+    free(file);
     return true;
 }
