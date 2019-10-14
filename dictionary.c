@@ -23,6 +23,9 @@ typedef struct node
 }
 node;
 
+char *unfinishedWord = "";
+char *finishedWord = "";
+
 char memoryDict[144091][50];
 
 
@@ -65,9 +68,9 @@ bool load(const char *dictionary)
     FILE *file = fopen(dictionary, "r");
     int j = 0;
     int k = 0;
-    char *unfinishedWord = malloc(50);
-    char *finishedWord = malloc(50);
     char c[1];
+    unfinishedWord = malloc(50);
+    finishedWord = malloc(50);
     while(!feof(file))
     {
         fread(c, 1, 1, file);
@@ -137,5 +140,7 @@ unsigned int size(void)
 // Unloads dictionary from memory, returning true if successful else false
 bool unload(void)
 {
+    free(unfinishedWord);
+    free(finishedWord);
     return true;
 }
