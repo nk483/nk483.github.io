@@ -61,10 +61,10 @@ unsigned int hash(const char *word)
 // Loads dictionary into memory, returning true if successful else false
 bool load(const char *dictionary)
 {
-     if (fopen(dictionary, "r") == NULL)
-    {
-        return false;
-    }
+    //  if (fopen(dictionary, "r") == NULL)
+    // {
+    //     return false;
+    // }
     FILE *file = fopen(dictionary, "r");
     int j = 0;
     int k = 0;
@@ -121,7 +121,7 @@ bool load(const char *dictionary)
     // currentLink->next = append;
     // a++;
     // }
-
+    free(file);
     return true;
 }
 // Returns number of words in dictionary if loaded else 0 if not yet loaded
