@@ -1,8 +1,10 @@
 from cs50 import get_string
 def main():
+    #Gets credit card number from user
     number = get_string("Number: ")
     sum = 0
     twoDigit = int(number[:2])
+    #First loop of Luhn's Algorithm
     for i in range(len(number) - 2, -1, -2):
         digit = int(number[i])
         digit = 2 * digit
@@ -11,6 +13,7 @@ def main():
     for i in range(len(number) - 1, -1, -2):
         digit = int(number[i])
         sum += digit
+    # Checking that the sum is divisible by 10
     if sum % 10 != 0:
         print("INVALID")
         return
