@@ -8,6 +8,7 @@ def main():
     S = 0
     text = get_string("Text: ")
     for char in text:
+        # ord gets the ascii code of a char
         if ord(char) == 32:
             wordCount += 1
     for char in text:
@@ -19,12 +20,14 @@ def main():
     L = (letterCount/wordCount) * 100
     S = (sentenceCount/wordCount) * 100
     score = 0.0588 * L - 0.296 * S - 15.8
+    #To get an integer grade level
     score = round(score)
     if score < 1:
         print("Before Grade 1")
     elif score >= 16:
         print("Grade 16+")
     else:
+        # printf is print formatted since we have a variable inside what we're printing
         print(f"Grade {score}")
 
 
