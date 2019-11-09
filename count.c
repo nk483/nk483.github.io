@@ -17,6 +17,7 @@ int main(int argc, char *argv[])
         printf("Could not open file.\n");
         return 1;
     }
+    // To store skipped over bytes
     char *trashcan[3];
 
     int count = 0;
@@ -28,10 +29,12 @@ int main(int argc, char *argv[])
         {
             break;
         }
+        //If the ascii code was less than 128 then only one byte was needed to represent using UTF-8
         if (b < 128)
         {
             count++;
         }
+        //If the ascii code was between 194 and 223 then two bytes were needed so we skip over the next byte as we know it pertain to a character already counted
         else if (b >= 194 && b <= 223)
         {
             count++;
