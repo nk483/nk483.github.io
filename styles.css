@@ -1,0 +1,23 @@
+body
+{
+    background-color:khaki;
+}
+h1
+{
+    color: gray;
+}
+h2
+{
+    color: red;
+    text-align: center;
+}
+.sidebyside
+{
+    float: left;
+}
+#homepagelink
+{
+    position:fixed;
+    top: 0;
+    right:0;
+}

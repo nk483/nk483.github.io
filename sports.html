@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <title>
+            Sports
+        </title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+    </head>
+    <body>
+        <h1>
+            Nalin's Favorite Sports to Watch
+        </h1>
+        <h2>
+            Basketball
+        </h2>
+        <p>
+            In Basketball, as with most sports (but not all!), I root for my hometown team, the 76ers! I've got us as the dark horse to win it all this year,
+            if we can find our chemistry. My favorite sixer is quickly becoming the rookie Matisse Thybulle who always seems to know what to do on defense.
+        </p>
+        <h2>
+            Football
+        </h2>
+        <p>
+            My favorite football team to watch is (surprise) the Seahawks! When I was really young their blue and neon green jerseys caught my eye,
+             and I've stuck with them ever since. I've got the Seahawks too as a dark horse candidate to win it all, now that our O-line has learned how to block
+             and we've got Jadaveon Clowney hounding opposing QBs.
+        </p>
+        <h2>
+            Tennis
+        </h2>
+        <p>
+            Though there are many other sports that I watch from time to time, tennis is the only other one that makes
+            the cut as one that I consistently watch. My favorite player is Rafael Nadal, because, like me, he plays lefty and hits a two-handed
+            backhand. I have definitely looked to emulate my tennis game after his. My dad is a huge Federer fan, so the many Fed-Rafa battles
+            over the years have been greeted with excitement in the Khanna family.
+        </p>
+        <h2>
+            Your Turn!
+        </h2>
+        <p>
+            I've told you all a lot about me and how I like to spend my time, now I'm curious about you guys! What sport, of the three that I've listed,
+             is your favorite sport? Click the corresponding button below to tell me! I'm keeping a running count of my reader's favorites.
+        </p>
+        <div class="sidebyside">
+        <button id="Bball">Basketball</button>
+            <div id='BasketballCounter'>
+                0
+            </div>
+        </div>
+        <div class="sidebyside">
+        <button id="Football">Football</button>
+            <div id='FootballCounter'>
+                0
+            </div>
+        </div>
+        <div class="sidebyside">
+            <button id="Tennis">Tennis</button>
+            <div id='TennisCounter'>
+                0
+            </div>
+        </div>
+        <div id="homepagelink">
+        <h6>
+            Wanna head back to the home page?
+        </h6>
+        <p style = "text-align: center;">
+            Click <a href="index.html">here</a>!
+        </p>
+        </div>
+        <script>
+        let bballCounter = 0
+            document.querySelector('#Bball').onclick = function() {
+                bballCounter++;
+                document.querySelector('#BasketballCounter').innerHTML = bballCounter;
+            }
+        let footballCounter = 0
+            document.querySelector('#Football').onclick = function() {
+                footballCounter++;
+                document.querySelector('#FootballCounter').innerHTML = footballCounter;
+            }
+        let tennisCounter = 0
+            document.querySelector('#Tennis').onclick = function() {
+                tennisCounter++;
+                document.querySelector('#TennisCounter').innerHTML = tennisCounter;
+            }
+        </script>
+    </body>
+</html>
