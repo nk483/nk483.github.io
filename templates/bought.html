@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Buy
+{% endblock %}
+
+{% block main %}
+    <form action="/buy" method="post">
+        <div class="form-group">
+            <input class="form-control" name="symbol" placeholder="Enter Symbol" type="text">
+        </div>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="shares" placeholder="# of shares" type="text">
+        </div>
+        <button class="btn btn-primary" type="submit">Buy</button>
+    </form>
+    <p>
+        Buy Order successfully placed! You bought {{ shares }} shares of {{ company }} ({{ symbol }}) at {{ shareCost }} per share for a total cost of {{ totalCost }}.
+    </p>
+{% endblock %}

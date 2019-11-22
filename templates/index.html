@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <table>
+        <tr id="white">
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>TOTAL</th>
+        </tr>
+        {% for row in holdingDict %}
+        <tr>
+            <td>
+                {{ row['ticker'] }}
+            </td>
+            <td>
+                {{ row['name'] }}
+            </td>
+            <td>
+                {{ row['shares'] }}
+            </td>
+            <td>
+                {{ row['currentprice'] }}
+            </td>
+            <td>
+                {{ row['total'] }}
+            </td>
+        </tr>
+        {% endfor %}
+        <tr id="white">
+            <td>
+                Cash
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>
+                {{ cash }}
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td style="font-weight:bold">
+                {{ total }}
+            </td>
+        </tr>
+    </table>
+{% endblock %}
