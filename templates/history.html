@@ -1,0 +1,46 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Index
+{% endblock %}
+
+{% block main %}
+    <table>
+        <tr id="white">
+            <th>Symbol</th>
+            <th>Name</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>Buy/Sell</th>
+            <th>Timestamp</th>
+        </tr>
+        {% for row in historyDict %}
+        <tr>
+            <td>
+                {{ row['ticker'] }}
+            </td>
+            <td>
+                {{ row['name'] }}
+            </td>
+            <td>
+                {{ row['shares'] }}
+            </td>
+            <td>
+                {{ row['price'] }}
+            </td>
+            {% if row['bought'] == 1 %}
+                <td>
+                    Buy
+                </td>
+            {% else %}
+                <td>
+                    Sell
+                </td>
+            {% endif %}
+            <td>
+                {{ row['date'] }}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

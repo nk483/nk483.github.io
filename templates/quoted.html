@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Quote
+{% endblock %}
+
+{% block main %}
+    <div style="float:center">
+    <form action="/quote" method="post">
+        <div class="form-group">
+            <input autofocus class="form-control" name="quote" type="text" placeholder="Stock Quote">
+        </div>
+    </div>
+    <div style="float:center">
+        <button class="btn btn-primary" type="submit">Lookup</button>
+    </div>
+    </form>
+    <p>
+        A share of {{ name }} ({{ symbol }}) costs {{price}}.
+    </p>
+
+{% endblock %}
