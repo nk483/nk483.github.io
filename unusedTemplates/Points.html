@@ -1,0 +1,13 @@
+{% extends "basketballLayout.html" %}
+
+{% block title %}
+    Basketball GOAT
+{% endblock %}
+
+{% block main %}
+    <h1> Your Basketball Greatest Player of All Time Is...</h1>
+    <h2> {{ player }}</h2>
+    <h3> With {{ stat }} Points!</h3>
+    <img src="{{url}}" alt="Picture of {{ player }}">
+
+{% endblock %}
