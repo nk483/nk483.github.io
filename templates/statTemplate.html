@@ -1,0 +1,25 @@
+<!--This html file displays all database queries from the homepage-->
+{% extends "basketballLayout.html" %}
+
+{% block main %}
+    <div style="text-align:left">
+        <h1> Your Greatest Basketball Player of All Time Is...</h1>
+        <h2> {{ player }}</h2>
+        <h3> With {{ statValue }} {{stat}}!</h3>
+        <!--These if statements are the stat values of each condition are displayed.-->
+        {% if conditions >= 1 %}
+            <h2> And </h2>
+            <h3> {{conditionStatValue1}} {{conditionStatOriginal1}}! </h3>
+        {% endif %}
+        {% if conditions >= 2 %}
+            <h2> And </h2>
+            <h3> {{conditionStatValue2}} {{conditionStatOriginal2}}! </h3>
+        {% endif %}
+        {% if conditions >= 3 %}
+            <h2> And </h2>
+            <h3> {{conditionStatValue3}} {{conditionStatOriginal3}}! </h3>
+        {% endif %}
+    </div>
+    <!--This displays the image of the player-->
+    <img src="{{url}}" alt="Picture of {{ player }}">
+{% endblock %}
